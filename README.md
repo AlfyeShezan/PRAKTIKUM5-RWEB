@@ -43,15 +43,15 @@ Menambahkan bagian header yang mencantumkan detail identitas mahasiswa (Nama, NI
 ## Screenshot Tampilan
 
 ### 1. Halaman Utama (Home)
-![Home Screenshot](https://raw.githubusercontent.com/AlfyeShezan/PRAKTIKUM5-RWEB/main/public/screenshots/home.png)
+![Home Screenshot](public/screenshots/home.png)
 *Halaman utama dengan desain Neobrutalism dan identitas mahasiswa di bagian atas.*
 
 ### 2. Halaman User (Parameter: Name)
-![User Screenshot](https://raw.githubusercontent.com/AlfyeShezan/PRAKTIKUM5-RWEB/main/public/screenshots/user.png)
+![User Screenshot](public/screenshots/user.png)
 *Contoh routing dengan parameter nama secara dinamis.*
 
 ### 3. Halaman Category (Parameter: ID)
-![Category Screenshot](https://raw.githubusercontent.com/AlfyeShezan/PRAKTIKUM5-RWEB/main/public/screenshots/category.png)
+![Category Screenshot](public/screenshots/category.png)
 *Contoh routing dengan parameter ID kategori.*
 
 ---
