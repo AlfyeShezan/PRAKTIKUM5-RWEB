@@ -13,6 +13,7 @@
             --main: #ffdf6b; /* Bright Yellow */
             --accent: #ff90e8; /* Pink */
             --secondary: #00e1ff; /* Cyan */
+            --green: #33ff66;
             --black: #000000;
             --border-width: 4px;
             --shadow-offset: 8px;
@@ -32,29 +33,81 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 1rem;
+            padding: 2rem 1rem;
         }
 
         .container {
             width: 100%;
-            max-width: 800px;
-            text-align: left;
+            max-width: 850px;
         }
 
+        /* Branding Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg);
+            border: var(--border-width) solid var(--black);
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--black);
+            margin-bottom: 2rem;
+        }
+
+        .user-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border: 3px solid var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            box-shadow: 4px 4px 0px 0px var(--black);
+        }
+
+        .user-info h2 {
+            font-size: 1.25rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .user-info p {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: rgba(0,0,0,0.6);
+            margin: 0;
+        }
+
+        .task-badge {
+            background: var(--green);
+            padding: 0.5rem 1rem;
+            border: 3px solid var(--black);
+            font-weight: 900;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0px 0px var(--black);
+        }
+
+        /* Main Content */
         .card {
             background: var(--bg);
             border: var(--border-width) solid var(--black);
             padding: 2.5rem;
             box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--black);
             margin-bottom: 2rem;
-            position: relative;
+            min-height: 300px;
         }
 
         .badge {
             display: inline-block;
             background: var(--secondary);
-            color: var(--black);
             padding: 0.5rem 1rem;
             border: var(--border-width) solid var(--black);
             font-weight: 900;
@@ -69,14 +122,13 @@
             text-transform: uppercase;
             line-height: 1;
             margin-bottom: 1.5rem;
-            -webkit-text-stroke: 1px var(--black);
         }
 
         p {
             font-size: 1.5rem;
             font-weight: 700;
             line-height: 1.4;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         code {
@@ -86,23 +138,25 @@
             font-weight: 900;
         }
 
+        /* Navigation */
         .nav {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: flex-start;
+            margin-bottom: 2rem;
         }
 
         .nav-link {
             text-decoration: none;
             color: var(--black);
             font-weight: 900;
-            padding: 1rem 1.5rem;
+            padding: 1.25rem;
             background: var(--bg);
             border: var(--border-width) solid var(--black);
             box-shadow: 4px 4px 0px 0px var(--black);
             text-transform: uppercase;
-            transition: transform 0.1s, box-shadow 0.1s;
+            text-align: center;
+            transition: all 0.1s;
         }
 
         .nav-link:hover {
@@ -118,27 +172,58 @@
 
         .nav-link.active {
             background: var(--secondary);
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px var(--black);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 2rem;
+            border-top: var(--border-width) solid var(--black);
+            width: 100%;
+            margin-top: auto;
         }
 
         @media (max-width: 640px) {
             h1 { font-size: 2.5rem; }
-            .card { padding: 1.5rem; }
+            .header { flex-direction: column; gap: 1rem; text-align: center; }
+            .user-brand { flex-direction: column; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
-            @yield('content')
-        </div>
+        <header class="header">
+            <div class="user-brand">
+                <div class="user-avatar">AS</div>
+                <div class="user-info">
+                    <h2>Alfye Shezan</h2>
+                    <p>@AlfyeShezan / LetsAlfyy</p>
+                </div>
+            </div>
+            <div class="task-badge">
+                Postest Praktikum 5
+            </div>
+        </header>
 
-        <div class="nav">
+        <nav class="nav">
             <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">HOME</a>
             <a href="{{ url('/contact') }}" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">CONTACT</a>
             <a href="{{ url('/user/ALFY') }}" class="nav-link {{ request()->is('user/*') ? 'active' : '' }}">USER</a>
-            <a href="{{ url('/post/neo-brutalism') }}" class="nav-link {{ request()->is('post/*') ? 'active' : '' }}">POST</a>
-            <a href="{{ url('/category/99') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }}">CATEGORY</a>
-        </div>
+            <a href="{{ url('/post/routing-laravel') }}" class="nav-link {{ request()->is('post/*') ? 'active' : '' }}">POST</a>
+            <a href="{{ url('/category/10') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }}">CATEGORY</a>
+        </nav>
+
+        <main class="card">
+            @yield('content')
+        </main>
     </div>
+
+    <footer class="footer">
+        Handcrafted with 🖤 by Alfye Shezan &copy; 2026
+    </footer>
 </body>
 </html>
