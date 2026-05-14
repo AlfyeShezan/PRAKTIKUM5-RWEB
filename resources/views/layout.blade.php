@@ -3,171 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - Laravel Praktikum</title>
+    <title>@yield('title') - Neobrutalism Laravel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #f43f5e;
+            --bg: #fff;
+            --main: #ffdf6b; /* Bright Yellow */
+            --accent: #ff90e8; /* Pink */
+            --secondary: #00e1ff; /* Cyan */
+            --black: #000000;
+            --border-width: 4px;
+            --shadow-offset: 8px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Public Sans', sans-serif;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--main);
+            color: var(--black);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
+            padding: 1rem;
         }
 
         .container {
             width: 100%;
             max-width: 800px;
-            padding: 2rem;
-            text-align: center;
+            text-align: left;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-            z-index: 0;
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #818cf8, #f43f5e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.02em;
-        }
-
-        p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
+            background: var(--bg);
+            border: var(--border-width) solid var(--black);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--black);
             margin-bottom: 2rem;
-            line-height: 1.6;
+            position: relative;
         }
 
         .badge {
             display: inline-block;
+            background: var(--secondary);
+            color: var(--black);
             padding: 0.5rem 1rem;
-            background: rgba(99, 102, 241, 0.2);
-            color: #818cf8;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
+            border: var(--border-width) solid var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 4px 4px 0px 0px var(--black);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            -webkit-text-stroke: 1px var(--black);
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        code {
+            background: var(--accent);
+            padding: 0.2rem 0.5rem;
+            border: 2px solid var(--black);
+            font-weight: 900;
         }
 
         .nav {
-            margin-top: 3rem;
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .nav-link {
             text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--black);
+            font-weight: 900;
+            padding: 1rem 1.5rem;
+            background: var(--bg);
+            border: var(--border-width) solid var(--black);
+            box-shadow: 4px 4px 0px 0px var(--black);
+            text-transform: uppercase;
+            transition: transform 0.1s, box-shadow 0.1s;
         }
 
         .nav-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text);
-            transform: translateY(-2px);
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px var(--black);
+            background: var(--accent);
+        }
+
+        .nav-link:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px var(--black);
         }
 
         .nav-link.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+            background: var(--secondary);
         }
-
-        .glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--primary);
-            filter: blur(150px);
-            opacity: 0.15;
-            z-index: -1;
-            border-radius: 50%;
-        }
-
-        .glow-1 { top: 10%; left: 10%; }
-        .glow-2 { bottom: 10%; right: 10%; background: var(--accent); }
 
         @media (max-width: 640px) {
             h1 { font-size: 2.5rem; }
-            .card { padding: 2rem; }
+            .card { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-
     <div class="container">
         <div class="card">
-            <div class="card-content">
-                @yield('content')
-            </div>
+            @yield('content')
         </div>
 
         <div class="nav">
-            <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
-            <a href="{{ url('/contact') }}" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
-            <a href="{{ url('/user/JohnDoe') }}" class="nav-link {{ request()->is('user/*') ? 'active' : '' }}">User</a>
-            <a href="{{ url('/post/hello-world') }}" class="nav-link {{ request()->is('post/*') ? 'active' : '' }}">Post</a>
-            <a href="{{ url('/category/123') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }}">Category</a>
+            <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">HOME</a>
+            <a href="{{ url('/contact') }}" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">CONTACT</a>
+            <a href="{{ url('/user/ALFY') }}" class="nav-link {{ request()->is('user/*') ? 'active' : '' }}">USER</a>
+            <a href="{{ url('/post/neo-brutalism') }}" class="nav-link {{ request()->is('post/*') ? 'active' : '' }}">POST</a>
+            <a href="{{ url('/category/99') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }}">CATEGORY</a>
         </div>
     </div>
 </body>
