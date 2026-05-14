@@ -1,59 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Praktikum 5 - Rekayasa Web (Laravel Routing)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Tugas Postest Praktikum 5: Implementasi Routing Laravel dengan desain Neobrutalism.
 
-## About Laravel
+## Identitas Mahasiswa
+- **Nama**: ALFI DIAS SAPUTRA
+- **NIM**: 2300018228
+- **Prodi**: INFORMATIKA
+- **Praktikum**: REKAYASA WEB
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Deskripsi Tugas
+Project ini mengimplementasikan 5 buah routing pada Laravel 11 dengan rincian sebagai berikut:
+1. **2 Routing Tanpa Parameter**:
+   - `/`: Halaman Utama (Home)
+   - `/contact`: Halaman Kontak
+2. **3 Routing Dengan Parameter**:
+   - `/user/{name}`: Menampilkan profil user berdasarkan nama.
+   - `/post/{slug}`: Menampilkan postingan berdasarkan slug.
+   - `/category/{id}`: Menampilkan kategori berdasarkan ID unik.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Fitur & Perubahan yang Ditambahkan
+### 1. Desain Neobrutalism
+Aplikasi ini menggunakan gaya desain **Neobrutalism** yang memiliki karakteristik:
+- **Warna Kontras Tinggi**: Penggunaan warna kuning (`#ffdf6b`), pink (`#ff90e8`), dan cyan (`#00e1ff`).
+- **Thick Borders**: Border hitam tebal (4px) di hampir semua elemen UI.
+- **Hard Shadows**: Bayangan tegas tanpa blur (8px offset) untuk memberikan kesan 3D retro.
+- **Typography Bold**: Menggunakan font *Public Sans* dengan weight 900 untuk teks utama.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 2. Templating Blade
+- Menggunakan `layout.blade.php` sebagai template utama (Master Layout).
+- Setiap halaman diimplementasikan menggunakan `@extends` dan `@section` untuk efisiensi kode.
+- Header dinamis yang menampilkan identitas mahasiswa di setiap halaman.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 3. Header Branding
+Menambahkan bagian header yang mencantumkan detail identitas mahasiswa (Nama, NIM, Prodi, Praktikum) sebagai bukti pengerjaan tugas.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Screenshot Tampilan
 
-### Premium Partners
+### 1. Halaman Utama (Home)
+![Home Screenshot](https://raw.githubusercontent.com/AlfyeShezan/PRAKTIKUM5-RWEB/main/public/screenshots/home.png)
+*Halaman utama dengan desain Neobrutalism dan identitas mahasiswa di bagian atas.*
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 2. Halaman User (Parameter: Name)
+![User Screenshot](https://raw.githubusercontent.com/AlfyeShezan/PRAKTIKUM5-RWEB/main/public/screenshots/user.png)
+*Contoh routing dengan parameter nama secara dinamis.*
 
-## Contributing
+### 3. Halaman Category (Parameter: ID)
+![Category Screenshot](https://raw.githubusercontent.com/AlfyeShezan/PRAKTIKUM5-RWEB/main/public/screenshots/category.png)
+*Contoh routing dengan parameter ID kategori.*
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Cara Menjalankan Project
+1. Clone repositori ini.
+2. Jalankan `composer install`.
+3. Salin `.env.example` ke `.env`.
+4. Jalankan `php artisan key:generate`.
+5. Jalankan `php artisan serve`.
+6. Akses di `http://localhost:8000`.
