@@ -44,13 +44,21 @@
         /* Branding Header */
         .header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
             background: var(--bg);
             border: var(--border-width) solid var(--black);
             padding: 1.5rem 2rem;
             box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--black);
             margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--black);
+            padding-bottom: 1rem;
         }
 
         .user-brand {
@@ -60,29 +68,46 @@
         }
 
         .user-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: var(--accent);
             border: 3px solid var(--black);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             box-shadow: 4px 4px 0px 0px var(--black);
         }
 
         .user-info h2 {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .user-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: rgba(0,0,0,0.05);
+            padding: 1rem;
+            border: 2px solid var(--black);
+        }
+
+        .detail-item {
+            font-weight: 700;
+            font-size: 0.875rem;
             text-transform: uppercase;
         }
 
-        .user-info p {
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: rgba(0,0,0,0.6);
-            margin: 0;
+        .detail-item span {
+            color: var(--black);
+            background: var(--secondary);
+            padding: 0.2rem 0.4rem;
+            border: 1px solid var(--black);
+            margin-right: 0.5rem;
         }
 
         .task-badge {
@@ -102,7 +127,7 @@
             padding: 2.5rem;
             box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--black);
             margin-bottom: 2rem;
-            min-height: 300px;
+            min-height: 250px;
         }
 
         .badge {
@@ -117,7 +142,7 @@
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
             text-transform: uppercase;
             line-height: 1;
@@ -125,7 +150,7 @@
         }
 
         p {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             line-height: 1.4;
             margin-bottom: 1.5rem;
@@ -188,8 +213,8 @@
         }
 
         @media (max-width: 640px) {
-            h1 { font-size: 2.5rem; }
-            .header { flex-direction: column; gap: 1rem; text-align: center; }
+            h1 { font-size: 2rem; }
+            .header-top { flex-direction: column; gap: 1rem; text-align: center; }
             .user-brand { flex-direction: column; }
         }
     </style>
@@ -197,24 +222,30 @@
 <body>
     <div class="container">
         <header class="header">
-            <div class="user-brand">
-                <div class="user-avatar">AS</div>
-                <div class="user-info">
-                    <h2>Alfye Shezan</h2>
-                    <p>@AlfyeShezan / LetsAlfyy</p>
+            <div class="header-top">
+                <div class="user-brand">
+                    <div class="user-avatar">AD</div>
+                    <div class="user-info">
+                        <h2>ALFI DIAS SAPUTRA</h2>
+                    </div>
+                </div>
+                <div class="task-badge">
+                    Postest Praktikum 5
                 </div>
             </div>
-            <div class="task-badge">
-                Postest Praktikum 5
+            <div class="user-details">
+                <div class="detail-item"><span>NIM</span> 2300018228</div>
+                <div class="detail-item"><span>PRODI</span> INFORMATIKA</div>
+                <div class="detail-item"><span>PRAKTIKUM</span> REKAYASA WEB</div>
             </div>
         </header>
 
         <nav class="nav">
             <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">HOME</a>
             <a href="{{ url('/contact') }}" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">CONTACT</a>
-            <a href="{{ url('/user/ALFY') }}" class="nav-link {{ request()->is('user/*') ? 'active' : '' }}">USER</a>
-            <a href="{{ url('/post/routing-laravel') }}" class="nav-link {{ request()->is('post/*') ? 'active' : '' }}">POST</a>
-            <a href="{{ url('/category/10') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }}">CATEGORY</a>
+            <a href="{{ url('/user/ALFI') }}" class="nav-link {{ request()->is('user/*') ? 'active' : '' }}">USER</a>
+            <a href="{{ url('/post/rekayasa-web') }}" class="nav-link {{ request()->is('post/*') ? 'active' : '' }}">POST</a>
+            <a href="{{ url('/category/23') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }}">CATEGORY</a>
         </nav>
 
         <main class="card">
@@ -223,7 +254,7 @@
     </div>
 
     <footer class="footer">
-        Handcrafted with 🖤 by Alfye Shezan &copy; 2026
+        Handcrafted with 🖤 by Alfi Dias Saputra &copy; 2026
     </footer>
 </body>
 </html>
